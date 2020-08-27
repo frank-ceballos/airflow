@@ -12,7 +12,7 @@ Notice that `bash_dag.py` is broken into the following sections:
 2. [Setting Default Variables]()
 3. [Define DAG]()
 
-We will discuss this in further detail below
+Let this discuss this in further detail below
 
 ## Importing Libraries
 
@@ -52,10 +52,8 @@ default_args = {
 
 Let's discuss the contents of this dictionary:
 
-* `owner`: This defines the owner of the DAG
-* `description`: This is a string describing the DAG
-* `start_date`: This parameter will be set to a `datetime` object that defines the start of the DAG. 
-    In this example, the start date is January 01, 2018. Keep this in mind because it will
-    determine when the DAG will start running.
-* `concurrency`: The number of threads use to run your tasks
-* `retries`: 
+* `owner`: (str) - the owner of the DAG
+* `description`:(str) - this is a string describing the DAG
+* `start_date`: (datetime.datetime) – the timestamp from which the scheduler will attempt to backfill
+* `concurrency`: (int) – the number of task instances allowed to run concurrently
+* `retries`: (int) – the number of retries that should be performed before failing the task
