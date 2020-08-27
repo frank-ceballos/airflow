@@ -6,6 +6,5 @@ awesome videos.
 
 List of Demos:
 
-* [Learn how to use the BashOperator to create task that execute bash commands](/dag-examples/01-BashOperator)
-* Create your own DAGs using BashOperator, PythonOperators, etc .
-* Navigate and understsand the UI to start, monitor, and maintain existing workflows
+* [01 - Create a DAG that executes bash commands](/dag-examples/01-BashOperator)
+* [02 - Create a DAG that executes Python code](/dag-examples/02-PythonOperator)
