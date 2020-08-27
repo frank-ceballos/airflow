@@ -8,21 +8,54 @@ in detail.
 
 Notice that `bash_dag.py` is broken into the following sections:
 
-1. Importing Libraries
-2. Setting Default Variables
-3. Define DAG 
+1. [Importing Libraries]()
+2. [Setting Default Variables]()
+3. [Define DAG]()
 
 We will discuss this in further detail below
 
 ## Importing Libraries
 
-In this section of the `bash_dag.py`, we import `datetime`, `DAG`, and `BashOperator`.
-The `DAG` class will be used to create an instance of a `DAG` object. It takes several parameters
-such as `start_date`, `owner`, `retries`, and more. Inside `DAG` instance, we can add task using
-Operators. In this case, we will use the `BashOperator` to create task that run bash commands.
+In this section we import all the packages we need to create our DAG.
 
-```python {.line-numbers}
+```python
+###############################################################################
+#                          1. Importing Libraries                             #
+###############################################################################
 import datetime as dt 
 from airflow import DAG # Use to create an instance of the DAG object
 from airflow.operators.bash_operator import BashOperator # Use to create task that run bash commands
 ```
+
+As you can see, we import `datetime`, `DAG`, and `BashOperator`.
+The `DAG` class will be used to create an instance of a `DAG` object. Inside the `DAG` instance,
+we can add task using Operators. In this case, we will use the `BashOperator` to 
+create task that run bash commands. 
+
+
+## Setting Default Values
+We will now define a dictionary that will used to set some of the parameters
+of the DAG instance that will be created in the next section.
+
+```python
+###############################################################################
+#                        2. Setting Default Variables                         #
+###############################################################################
+default_args = {
+        'owner': 'airflow',
+        'description': 'A DAG that runs bash commands',
+        'start_date': dt.datetime(2018, 1, 1),
+        'concurrency': 1,
+        'retries': 3
+}
+```
+
+Let's discuss the contents of this dictionary:
+
+* `owner`: This defines the owner of the DAG
+* `description`: This is a string describing the DAG
+* `start_date`: This parameter will be set to a `datetime` object that defines the start of the DAG. 
+    In this example, the start date is January 01, 2018. Keep this in mind because it will
+    determine when the DAG will start running.
+* `concurrency`: The number of threads use to run your tasks
+* `retries`: 
